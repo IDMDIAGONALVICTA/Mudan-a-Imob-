@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mudança de Imobiliária – Solicitações</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><div class="wrap">
+  <div><h1>Mudança de Imobiliária</h1><p>Solicitação, aprovação e acompanhamento de transferência de corretores</p></div>
+  <div><span class="who" id="who">Verificando acesso…</span><a class="sair hidden" id="sair" href="/logout">Sair</a></div>
+</div></header>
+
+<main class="wrap" id="bloqueio">
+  <section class="card">
+    <h2 id="bloqTitulo">Verificando seu acesso…</h2>
+    <p class="muted" id="bloqMsg"></p>
+    <a class="btn bloq-link hidden" id="bloqLogin" href="/login">Entrar com a conta Microsoft</a>
+  </section>
+</main>
+
+<main class="wrap hidden" id="app">
+  <section class="card" aria-labelledby="h-form">
+    <h2 id="h-form">Nova solicitação de mudança</h2>
+    <div class="grid">
+      <div class="full" id="boxBusca">
+        <label for="busca">Corretor (nome ou CNPJ/CPF) <span class="req">*</span></label>
+        <input id="busca" type="search" autocomplete="off" placeholder="Digite ao menos 3 letras ou dígitos">
+        <ul class="results hidden" id="resultados"></ul>
+        <div class="note">Busque pelo nome do corretor ou pelo CNPJ/CPF.</div>
+      </div>
+      <div class="full hidden" id="boxSel">
+        <label>Corretor selecionado</label>
+        <div class="chip"><div><strong id="selNome"></strong><small id="selDoc"></small></div><button class="linkbtn" id="trocar" type="button">trocar</button></div>
+      </div>
+      <div>
+        <label for="atual">Imobiliária atual</label>
+        <input id="atual" readonly placeholder="Preenchida ao selecionar o corretor">
+      </div>
+      <div>
+        <label for="gerente">Gerente responsável</label>
+        <input id="gerente" readonly placeholder="Preenchido ao selecionar o corretor">
+      </div>
+      <div class="full hidden" id="avisoInf"><div class="note info">Corretor sem equipe: não precisa de aprovação. A solicitação fica registrada como <strong>Informativo</strong> no painel, visível a Felipe e Anderson.</div></div>
+      <div class="full">
+        <label for="nova">Nova imobiliária <span class="req">*</span></label>
+        <select id="nova" disabled><option value="">Selecione o corretor primeiro</option></select>
+        <div class="note" id="avisoAprov"></div>
+      </div>
+      <div>
+        <label for="solicitante">Nome do solicitante <span class="req">*</span></label>
+        <input id="solicitante" autocomplete="name" placeholder="Seu nome completo">
+      </div>
+      <div>
+        <label for="email">E-mail da empresa solicitante</label>
+        <input id="email" type="email" readonly>
+        <div class="note">É o e-mail do seu login, preenchido automaticamente.</div>
+      </div>
+      <div class="full"><button class="btn" id="enviar" type="button" disabled>Enviar solicitação</button> <span class="muted" id="msgEnvio"></span></div>
+      <div class="full hidden" id="posEnvio"></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="h-painel">
+    <h2 id="h-painel">Painel de acompanhamento</h2>
+    <div id="banner" class="banner hidden"></div>
+    <div class="toolbar">
+      <input id="filtro" type="search" placeholder="Filtrar por corretor ou solicitante">
+      <select id="filtroStatus" aria-label="Filtrar por status">
+        <option value="">Todos os status</option>
+        <option>Aguardando aprovação</option><option>Aprovado</option><option>Não aprovado</option><option>Informativo</option><option>Cancelada</option>
+      </select>
+      <label class="inl" for="dtDe">De <input type="date" id="dtDe"></label>
+      <label class="inl" for="dtAte">até <input type="date" id="dtAte"></label>
+      <button class="btn small ghost" id="limpar" type="button">Limpar filtros</button>
+      <span class="muted" id="contador"></span>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr>
+          <th>Corretor</th><th>Imobiliária antiga</th><th>Imobiliária nova</th><th>Solicitante</th><th>E-mail solicitante</th>
+          <th>Gerente responsável</th><th>Data da solicitação</th><th>Status</th><th>Aprovação Felipe</th><th>Aprovação Anderson</th><th>Data da decisão</th><th>Avisos (WhatsApp)</th><th>Cancelamento</th>
+        </tr></thead>
+        <tbody id="linhas"></tbody>
+      </table>
+      <div class="empty" id="vazio">Carregando solicitações…</div>
+    </div>
+    <p class="muted">Somente o gerente responsável (Felipe Freire ou Anderson Vital), logado com a própria conta, aprova ou reprova a etapa dele. O histórico completo permanece neste painel.</p>
+  </section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="/app.js"></script>
+</body>
+</html>

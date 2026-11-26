@@ -1,0 +1,37 @@
+{
+  "dominiosPermitidos": [
+    "victa.eng.br",
+    "diagonalinc.com.br"
+  ],
+  "aprovadores": {
+    "FELIPE FREIRE": {
+      "chave": "felipe",
+      "apelido": "Felipe",
+      "email": "felipearaujo@victa.eng.br",
+      "whatsapp": "5585996285525"
+    },
+    "ANDERSON VITAL": {
+      "chave": "anderson",
+      "apelido": "Anderson",
+      "email": "andersonvital@victa.eng.br",
+      "whatsapp": "5585992284868"
+    }
+  },
+  "executores": [
+    {
+      "nome": "Dimas",
+      "whatsapp": "5585982246423"
+    },
+    {
+      "nome": "Henrique",
+      "whatsapp": "5585981891648"
+    },
+    {
+      "nome": "Edivania",
+      "whatsapp": "5585991654816"
+    }
+  ],
+  "administradores": [
+    "edivaniamelo@victa.eng.br"
+  ]
+}
